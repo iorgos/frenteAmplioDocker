@@ -1,0 +1,17 @@
+# Web node
+web:
+  hostname: web
+  image: blinkreaction/drupal-apache:2.2-stable
+  volumes:
+    # Project root folder mapping
+    - &project_root "../:/var/www"
+
+# CLI node
+# Used for all console commands and tools.
+cli:
+  hostname: cli
+  image: blinkreaction/drupal-cli:php7
+  volumes:
+    - *project_root
+    - "./etc/php5/php.ini:/etc/php/7.0/fpm/conf.d/z_php.ini"
+    - "./etc/php5/php-cli.ini:/etc/php/7.0/cli/conf.d/z_php.ini"

@@ -1,0 +1,14 @@
+# Web node
+web:
+  extends:
+    file: services/services.yml
+    service: web
+  links:
+    - cli
+  ports:
+    - "88:80"
+# CLI node
+cli:
+  extends:
+    file: services/services.yml
+    service: cli
